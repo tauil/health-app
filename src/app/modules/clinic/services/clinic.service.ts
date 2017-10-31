@@ -9,8 +9,11 @@ const DATA = [{id: 1, name: "North ABC"}, {id: 2, name: "South ABC"}, {id: 3, na
 export class ClinicService {
 
   constructor() {
-    let data = JSON.stringify(DATA);
-    localStorage.setItem('clinics', data);
+    let clinics = this.loadClinicsData();
+    if (clinics.length === 0) {
+      let data = JSON.stringify(DATA);
+      localStorage.setItem('clinics', data);
+    }
   }
 
   find(id: number):Observable<Clinic> {
