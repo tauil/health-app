@@ -1,0 +1,21 @@
+<nav class="sub nav">
+  <a routerLink="/patient/new">New patient</a>
+</nav>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let patient of patients">
+      <td>{{patient.id}}</td>
+      <td><a routerLink="/patients/{{patient.id}}">{{patient.name}}</a></td>
+      <td><a routerLink="/patients/{{patient.id}}/edit">Edit</a> | <a href="javascript:void(0)" (click)="destroyPatient(patient)">Delete</a></td>
+    </tr>
+  </tbody>
+</table>

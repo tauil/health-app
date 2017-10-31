@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { ClinicModule } from './modules/clinic/clinic.module';
 import { TherapistModule } from './modules/therapist/therapist.module';
+import { PatientModule } from './modules/patient/patient.module';
 
 import { ROUTES } from './app.routes';
 
@@ -20,7 +21,8 @@ import { ROUTES } from './app.routes';
     FormsModule,
     HttpModule,
     ClinicModule,
-    TherapistModule
+    TherapistModule,
+    PatientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
