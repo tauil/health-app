@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { Therapist } from '../therapist';
 
-const DATA = [{id: 1, name: "John Smith"}, {id: 2, name: "Jack Flash"}, {id: 3, name: "Maria Lucia"}];
+const DATA = [{id: 1, name: "John Smith", clinic_id: 1}, {id: 2, name: "Jack Flash", clinic_id: 2}, {id: 3, name: "Maria Lucia", clinic_id: 1}];
 
 @Injectable()
 export class TherapistService {
