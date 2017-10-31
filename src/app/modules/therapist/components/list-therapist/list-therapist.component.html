@@ -1,0 +1,21 @@
+<nav class="sub nav">
+  <a routerLink="/therapist/new">New therapist</a>
+</nav>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let therapist of therapists">
+      <td>{{therapist.id}}</td>
+      <td><a routerLink="/therapists/{{therapist.id}}">{{therapist.name}}</a></td>
+      <td><a routerLink="/therapists/{{therapist.id}}/edit">Edit</a> | <a href="javascript:void(0)" (click)="destroyTherapist(therapist)">Delete</a></td>
+    </tr>
+  </tbody>
+</table>
