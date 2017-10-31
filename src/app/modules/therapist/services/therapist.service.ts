@@ -10,7 +10,7 @@ export class TherapistService {
 
   constructor() {
     let therapists = this.loadTherapistsData();
-    if (!therapists || therapists.length === 0) {
+    if (!therapists) {
       let data = JSON.stringify(DATA);
       localStorage.setItem('therapists', data);
     }

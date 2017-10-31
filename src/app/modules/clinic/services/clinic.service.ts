@@ -10,7 +10,7 @@ export class ClinicService {
 
   constructor() {
     let clinics = this.loadClinicsData();
-    if (clinics.length === 0) {
+    if (!clinics) {
       let data = JSON.stringify(DATA);
       localStorage.setItem('clinics', data);
     }
