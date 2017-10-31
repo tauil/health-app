@@ -19,5 +19,6 @@ Here are some improvements that could be done with more time.
 
 * DRY - Reduce a lot of repetition in the code
 * Add business logic to relationships like Therapists can be assigned to patients that are assigned to his Clinic
+* Write tests for the components (There's tests only for the services)
 * Write e2e tests
 * Create a better interface layout
