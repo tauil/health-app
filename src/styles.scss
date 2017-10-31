@@ -63,3 +63,25 @@ a, a:visited {
   color: blue;
   text-decoration: none;
 }
+
+form {
+  .field {
+    margin: 1em 0;
+
+    label {
+      display: block;
+      margin: 0 0 .5em;
+      color: #333;
+    }
+
+    input, select {
+      font-size: 1em;
+      padding: .5em;
+    }
+  }
+
+  button {
+    font-size: 1em;
+    padding: .5em 1em;
+  }
+}

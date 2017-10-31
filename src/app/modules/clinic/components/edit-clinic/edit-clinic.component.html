@@ -1,5 +1,9 @@
 <h1>Edit Clinic:</h1>
 <form>
-  <input type="text" [(ngModel)]="clinic.name" name="name" />
+  <div class="field">
+    <label for="name">Name:</label>
+    <input type="text" [(ngModel)]="clinic.name" name="name" />
+  </div>
+
   <button (click)="update()">Update</button>
 </form>

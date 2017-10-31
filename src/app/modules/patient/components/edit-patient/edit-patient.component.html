@@ -1,10 +1,27 @@
 <h1>Edit Patient:</h1>
 <form>
-  <input type="text" [(ngModel)]="patient.name" name="name" />
-  <select [(ngModel)]="patient.clinic_id" name="clinic_id">
-    <option *ngFor="let clinic of clinics" [value]="clinic.id">
-      {{clinic.name}}
-    </option>
-  </select>
+  <div class="field">
+    <label for="name">Name:</label>
+    <input type="text" [(ngModel)]="patient.name" name="name" />
+  </div>
+
+  <div class="field">
+    <label for="name">Clinic:</label>
+    <select [(ngModel)]="patient.clinic_id" name="clinic_id">
+      <option *ngFor="let clinic of clinics" [value]="clinic.id">
+        {{clinic.name}}
+      </option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label for="name">Therapist:</label>
+    <select [(ngModel)]="patient.therapist_id" name="therapist_id">
+      <option *ngFor="let therapist of therapists" [value]="therapist.id">
+        {{therapist.name}}
+      </option>
+    </select>
+  </div>
+
   <button (click)="update()">Update</button>
 </form>

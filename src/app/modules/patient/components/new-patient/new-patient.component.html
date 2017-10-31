@@ -1,5 +1,27 @@
 <h1>New Patient:</h1>
 <form>
-  <input type="text" [(ngModel)]="patient.name" name="name" />
+  <div class="field">
+    <label for="name">Name:</label>
+    <input type="text" [(ngModel)]="patient.name" name="name" />
+  </div>
+
+  <div class="field">
+    <label for="name">Clinic:</label>
+    <select [(ngModel)]="patient.clinic_id" name="clinic_id">
+      <option *ngFor="let clinic of clinics" [value]="clinic.id">
+        {{clinic.name}}
+      </option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label for="name">Therapist:</label>
+    <select [(ngModel)]="patient.therapist_id" name="therapist_id">
+      <option *ngFor="let therapist of therapists" [value]="therapist.id">
+        {{therapist.name}}
+      </option>
+    </select>
+  </div>
+
   <button (click)="save()">Save</button>
 </form>
