@@ -33,7 +33,19 @@ export class ClinicService {
   }
 
   update(clinic: Clinic) {
+    let component = this;
 
+    return new Observable(observer => {
+      let clinics = component.loadClinicsData();
+
+      clinics.forEach(c => {
+        if (c.id === clinic.id) c.name = clinic.name;
+      });
+
+      component.setData(clinics);
+      observer.next(true);
+      observer.complete();
+    });
   }
 
   destroy(id: number) {
@@ -42,6 +54,11 @@ export class ClinicService {
 
   private loadClinicsData():Array<Clinic> {
     return JSON.parse(localStorage.getItem('clinics'));
+  }
+
+  private setData(data):void {
+    let dataString = JSON.stringify(data);
+    localStorage.setItem('clinics', dataString);
   }
 
 }

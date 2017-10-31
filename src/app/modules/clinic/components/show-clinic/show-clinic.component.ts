@@ -14,9 +14,7 @@ export class ShowClinicComponent implements OnInit {
 
   constructor(private clinicService: ClinicService, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe((params: Params) => {
-      console.log('ID:', params['id'])
       this.clinicService.find(parseInt(params['id'])).subscribe(clinic => {
-        console.log('Clinic:', clinic);
         this.clinic = clinic;
       });
     });

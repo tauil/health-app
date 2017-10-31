@@ -12,19 +12,15 @@ export class ListClinicComponent implements OnInit {
   clinics: Array<Clinic>;
 
   constructor(private clinicService: ClinicService) {
-    this.loadClinics();
   }
 
   ngOnInit() {
-    console.log('ngOnInit()');
+    this.loadClinics();
   }
 
   loadClinics() {
     this.clinicService.list().subscribe(
-      clinics => {
-        console.log(clinics);
-        this.clinics = clinics
-      },
+      clinics => (this.clinics = clinics),
       error => console.log(error)
     );
   }
