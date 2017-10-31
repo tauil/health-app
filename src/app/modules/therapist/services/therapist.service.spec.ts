@@ -62,19 +62,19 @@ describe('TherapistService', () => {
 
   describe('#update', () => {
     it('should return the recently updated therapist record', inject([TherapistService], (service: TherapistService) => {
-      service.update({id: 1, name: 'Changed North ABC', clinic_id: 1}).subscribe(therapist => {
+      service.update({id: 1, name: 'Albert Griffin', clinic_id: 1}).subscribe(therapist => {
         expect(therapist.id).toEqual(1);
-        expect(therapist.name).toEqual('Changed North ABC');
+        expect(therapist.name).toEqual('Albert Griffin');
         expect(therapist.clinic_id).toEqual(1);
       });
     }));
 
     it('should update the record in localStorage', inject([TherapistService], (service: TherapistService) => {
-      service.update({id: 1, name: 'Changed North ABC', clinic_id: 1}).subscribe(therapist => {
+      service.update({id: 1, name: 'Albert Griffin', clinic_id: 1}).subscribe(therapist => {
         let therapists = JSON.parse(localStorage.getItem('therapists'));
         let updatedTherapist = therapists.filter(therapist => therapist.id === 1)[0];
         expect(updatedTherapist.id).toEqual(1);
-        expect(updatedTherapist.name).toEqual('Changed North ABC');
+        expect(updatedTherapist.name).toEqual('Albert Griffin');
         expect(updatedTherapist.clinic_id).toEqual(1);
       });
     }));
@@ -88,13 +88,13 @@ describe('TherapistService', () => {
     });
 
     it('should return true', inject([TherapistService], (service: TherapistService) => {
-      service.destroy({id: 1, name: 'North ABC', clinic_id: 1}).subscribe(done => {
+      service.destroy({id: 1, name: 'John Smith', clinic_id: 1}).subscribe(done => {
         expect(done).toBeTruthy();
       });
     }));
 
     it('should remove record from localStorage', inject([TherapistService], (service: TherapistService) => {
-      service.destroy({id: 1, name: 'North ABC', clinic_id: 1}).subscribe(done => {
+      service.destroy({id: 1, name: 'John Smith', clinic_id: 1}).subscribe(done => {
         let newData = DATA;
 
         newData.forEach((c, index) => {
