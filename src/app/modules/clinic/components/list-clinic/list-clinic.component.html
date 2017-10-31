@@ -1,0 +1,15 @@
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let clinic of clinics">
+      <td>{{clinic.id}}</td>
+      <td><a routerLink="/clinics/{{clinic.id}}">{{clinic.name}}</a></td>
+    </tr>
+  </tbody>
+</table>
