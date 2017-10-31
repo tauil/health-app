@@ -52,8 +52,11 @@ export class PatientService {
     return new Observable(observer => {
       let patients = component.loadPatientsData();
 
-      patients.forEach(c => {
-        if (c.id === patient.id) c.name = patient.name;
+      patients.forEach(p => {
+        if (p.id === patient.id) {
+          p.name = patient.name;
+          p.clinic_id = patient.clinic_id;
+        }
       });
 
       component.setData(patients);

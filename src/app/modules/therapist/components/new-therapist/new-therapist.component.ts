@@ -10,7 +10,7 @@ import { Therapist } from '../../therapist';
 })
 export class NewTherapistComponent implements OnInit {
 
-  therapist: Therapist = {id: null, name: ''};
+  therapist: Therapist = {id: null, name: '', clinic_id: null};
 
   constructor(private therapistService: TherapistService, public router: Router) { }
 

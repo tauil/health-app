@@ -3,6 +3,8 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { NgModel } from '@angular/forms';
 import { TherapistService } from '../../services/therapist.service';
 import { Therapist } from '../../therapist';
+import { ClinicService } from '../../../clinic/services/clinic.service';
+import { Clinic } from '../../../clinic/clinic';
 
 @Component({
   selector: 'app-edit-therapist',
@@ -12,8 +14,12 @@ import { Therapist } from '../../therapist';
 export class EditTherapistComponent implements OnInit {
 
   therapist: Therapist;
+  clinics: Array<Clinic>;
 
-  constructor(private therapistService: TherapistService, private activatedRoute: ActivatedRoute, public router: Router) {
+  constructor( private therapistService: TherapistService,
+               private activatedRoute: ActivatedRoute,
+               private router: Router,
+               private clinicService: ClinicService ) {
     this.activatedRoute.params.subscribe((params: Params) => {
       if (!params || !params['id']) return;
       this.therapistService.find(parseInt(params['id'])).subscribe(therapist => {
@@ -23,12 +29,20 @@ export class EditTherapistComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadClinics();
   }
 
   update() {
     this.therapistService.update(this.therapist).subscribe(updated => {
       if (updated) this.router.navigate(['/therapists/' + this.therapist.id]);
     });
+  }
+
+  loadClinics() {
+    this.clinicService.list().subscribe(
+      clinics => (this.clinics = clinics),
+      error => console.log(error)
+    );
   }
 
 }

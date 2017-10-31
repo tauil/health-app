@@ -1,5 +1,10 @@
 <h1>Edit Therapist:</h1>
 <form>
   <input type="text" [(ngModel)]="therapist.name" name="name" />
+  <select [(ngModel)]="therapist.clinic_id" name="clinic_id">
+    <option *ngFor="let clinic of clinics" [value]="clinic.id">
+      {{clinic.name}}
+    </option>
+  </select>
   <button (click)="update()">Update</button>
 </form>
