@@ -31,11 +31,22 @@ export class ClinicService {
     });
   }
 
-  create(clinic: Clinic) {
+  create(clinic: Clinic):Observable<Clinic> {
+    let component = this;
 
+    return new Observable(observer => {
+      let clinics = component.loadClinicsData();
+      component.newID().subscribe(id => {
+        clinic.id = id;
+        clinics.push(clinic);
+        component.setData(clinics);
+        observer.next(clinic);
+        observer.complete();
+      });
+    });
   }
 
-  update(clinic: Clinic) {
+  update(clinic: Clinic):Observable<Clinic> {
     let component = this;
 
     return new Observable(observer => {
@@ -46,7 +57,7 @@ export class ClinicService {
       });
 
       component.setData(clinics);
-      observer.next(true);
+      observer.next(clinic);
       observer.complete();
     });
   }
@@ -62,6 +73,22 @@ export class ClinicService {
   private setData(data):void {
     let dataString = JSON.stringify(data);
     localStorage.setItem('clinics', dataString);
+  }
+
+  private newID():Observable<number> {
+    let component = this;
+
+    return new Observable(observer => {
+      component.list().subscribe(
+        clinics => {
+          let clinicsIds = clinics.map(clinic => clinic.id);
+          let newId = Math.max.apply(null, clinicsIds) + 1;
+          observer.next(newId);
+          observer.complete();
+        },
+        error => console.log(error)
+      );
+    });
   }
 
 }

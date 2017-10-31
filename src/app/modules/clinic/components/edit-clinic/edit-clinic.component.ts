@@ -15,6 +15,7 @@ export class EditClinicComponent implements OnInit {
 
   constructor(private clinicService: ClinicService, private activatedRoute: ActivatedRoute, public router: Router) {
     this.activatedRoute.params.subscribe((params: Params) => {
+      if (!params || !params['id']) return;
       this.clinicService.find(parseInt(params['id'])).subscribe(clinic => {
         this.clinic = clinic;
       });
