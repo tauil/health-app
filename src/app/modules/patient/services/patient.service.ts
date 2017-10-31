@@ -56,6 +56,7 @@ export class PatientService {
         if (p.id === patient.id) {
           p.name = patient.name;
           p.clinic_id = patient.clinic_id;
+          p.therapist_id = patient.therapist_id;
         }
       });
 
