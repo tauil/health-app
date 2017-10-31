@@ -1,7 +1,11 @@
-<h1>{{title}}</h1>
+<h1 id="main-link"><a routerLink="/">{{title}}</a></h1>
 
-<nav>
+<nav class="nav">
   <a routerLink="/clinics">Clinics</a>
+  <a routerLink="/therapists">Therapists</a>
+  <a routerLink="/patients">Patients</a>
 </nav>
 
-<router-outlet></router-outlet>
+<section id="container">
+  <router-outlet></router-outlet>
+</section>
