@@ -15,7 +15,7 @@
     <tr *ngFor="let clinic of clinics">
       <td>{{clinic.id}}</td>
       <td><a routerLink="/clinics/{{clinic.id}}">{{clinic.name}}</a></td>
-      <td><a routerLink="/clinics/{{clinic.id}}/edit">Edit</a></td>
+      <td><a routerLink="/clinics/{{clinic.id}}/edit">Edit</a> | <a href="javascript:void(0)" (click)="destroyClinic(clinic)">Delete</a></td>
     </tr>
   </tbody>
 </table>

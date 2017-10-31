@@ -62,8 +62,20 @@ export class ClinicService {
     });
   }
 
-  destroy(id: number) {
+  destroy(clinic: Clinic):Observable<boolean> {
+    let component = this;
 
+    return new Observable(observer => {
+      let clinics = component.loadClinicsData();
+
+      clinics.forEach((c, index) => {
+        if (c.id === clinic.id) clinics.splice(index, 1);
+      });
+
+      component.setData(clinics);
+      observer.next(true);
+      observer.complete();
+    });
   }
 
   private loadClinicsData():Array<Clinic> {

@@ -25,4 +25,11 @@ export class ListClinicComponent implements OnInit {
     );
   }
 
+  destroyClinic(clinic: Clinic) {
+    if (!confirm("Are you sure?")) return;
+    this.clinicService.destroy(clinic).subscribe(done => {
+      if (done) this.loadClinics();
+    });
+  }
+
 }
